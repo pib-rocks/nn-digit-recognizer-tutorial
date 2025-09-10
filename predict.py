@@ -1,4 +1,4 @@
-# digit_recognizer_app.py
+# predict.py
 # This script creates a GUI for drawing digits and predicting them using the
 # trained neural network model.
 # Make sure to install Pillow: pip install Pillow

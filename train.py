@@ -1,4 +1,4 @@
-# neural_network_trainer.py
+# train.py
 # This script trains a neural network on the MNIST dataset using only NumPy.
 # It then saves the trained weights and biases to a file.
 
@@ -233,4 +233,4 @@ if __name__ == "__main__":
         output_nodes=OUTPUT_NODES,
         learning_rate=LEARNING_RATE # Not used for prediction but good for reference
     )
-    print("Model saved successfully. You can now run digit_recognizer_app.py.")
+    print("Model saved successfully. You can now run predict.py.")
