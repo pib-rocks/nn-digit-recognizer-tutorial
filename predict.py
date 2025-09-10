@@ -50,7 +50,8 @@ class NeuralNetwork:
     def predict(self, inputs):
         """Makes a prediction for a given input."""
         final_outputs = self.feedforward(inputs)
-        return np.argmax(final_outputs)
+        idx = np.argmax(final_outputs)
+        return idx, final_outputs[idx][0]
 
 
 class DigitRecognizerApp:
@@ -108,6 +109,7 @@ class DigitRecognizerApp:
         self.canvas.create_oval(x1, y1, x2, y2, fill="black", width=10)
         # Draw on the hidden PIL image
         self.draw.ellipse([x1, y1, x2, y2], fill="black", width=10)
+        self.predict_digit()
 
     def clear_canvas(self):
         """Clears the canvas and the PIL image."""
@@ -138,10 +140,10 @@ class DigitRecognizerApp:
         inputs = normalized_array.flatten().reshape(784, 1)
 
         # --- Make a prediction ---
-        prediction = self.nn.predict(inputs)
+        prediction, prediction_quality = self.nn.predict(inputs)
         
         # Update the result label
-        self.result_label.config(text=f"Prediction: {prediction}")
+        self.result_label.config(text=f"Prediction: {prediction} ({prediction_quality * 100:0.1f}% sure)")
 
 
 if __name__ == "__main__":
